@@ -72,10 +72,10 @@ For the quickest integration into web pages, you can use a Content Delivery Netw
 </head>
 <body>
     <div id="output"></div>
-    <script src="https://unpkg.com/quantible/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/quantible@latest/dist/index.iife.min.js"></script>
     <script>
         const inputString = "The price is $12.50 USD.";
-        const spokenText = quantible.convertQuantities.autoReplaceAllMatches(inputString);
+        const spokenText = Quantible.convertQuantities.autoReplaceAllMatches(inputString);
         document.getElementById('output').textContent = spokenText;
     </script>
 </body>
@@ -84,9 +84,9 @@ For the quickest integration into web pages, you can use a Content Delivery Netw
 
 In this example:
 
-*   We include Quantible by referencing the UMD build from unpkg CDN:  `https://unpkg.com/quantible/dist/index.umd.js`.
-*   The library is then globally accessible as `quantible`.
-*   We use `quantible.convertQuantities.autoReplaceAllMatches` to process a string and display the spoken word output in the `div#output` element.
+*   We include Quantible by referencing the IIFE build from unpkg CDN:  `https://unpkg.com/quantible@latest/dist/index.iife.min.js`.
+*   The library is then globally accessible as `Quantible`.
+*   We use `Quantible.convertQuantities.autoReplaceAllMatches` to process a string and display the spoken word output in the `div#output` element.
 
 ### 2.  CommonJS (CJS) - `require`
 
