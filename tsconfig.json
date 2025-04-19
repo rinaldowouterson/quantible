@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "ESNext",
+    "lib": ["es2022", "DOM"],
+    "outDir": "dist",
+    "rootDir": "src",
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "skipLibCheck": true,
+    "isolatedModules": true,
+
+    "moduleDetection": "force"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["dist", "**/*.test.ts"]
+}

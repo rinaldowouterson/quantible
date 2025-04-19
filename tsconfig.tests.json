@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "./test-dist"
+  },
+  "include": ["_tests_"],
+  "exclude": [] // Override the exclude from the base tsconfig.json
+}

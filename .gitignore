@@ -1,0 +1,11 @@
+# Ignore node_modules folder
+node_modules/
+
+# Ignore dist folder
+dist/
+
+# Ignore ts build info
+tsconfig.tsbuildinfo
+memlog/
+coverage/
+.DS_Store
