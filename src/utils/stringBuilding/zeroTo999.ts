@@ -25,7 +25,7 @@ export function zeroTo999(num: number): string {
     words += numbers.tens[Math.floor(num / 10)];
     num %= 10;
     if (num > 0) {
-      words += " " + numbers.ones[num];
+      words += "-" + numbers.ones[num];
     }
   } else if (num >= 10) {
     words += numbers.teens[num - 10];

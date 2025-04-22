@@ -1,7 +1,7 @@
 {
   "name": "quantible",
   "description": "A versatile library for extracting and converting numerical values, units, currency, and mathematical expressions into their spoken word equivalents.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

@@ -123,7 +123,5 @@ const convertQuantities = {
   },
 };
 
-console.log(convertQuantities.autoReplaceAllMatches("25 EUR"));
-
 export { convertQuantities, extractQuantities, validateExtractionResult };
 export type { ExtractionResult, baseCurrency, baseNumber, baseNumberUnit, baseOperator, baseScientific, baseUnitOnly };
