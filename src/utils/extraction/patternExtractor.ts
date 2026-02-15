@@ -20,15 +20,37 @@ export function extractFirstMatch(input: string): ExtractionResult | null {
     const extractedGroup = {} as ExtractionResult;
 
     switch (matchType) {
+      case "abbreviation":
+        extractedGroup.symbol = matchedGroup["abbreviation"];
+        break;
+      case "commonSymbol":
+        extractedGroup.symbol = matchedGroup["commonSymbol"];
+        break;
       case "symbolCurrency":
         extractedGroup.integer = matchedGroup["symbolInt"];
         extractedGroup.decimal = matchedGroup["symbolDec"];
+        // Pad single‑digit decimal with trailing zero for cents
+        if (extractedGroup.decimal && extractedGroup.decimal.length === 1) {
+          extractedGroup.decimal += "0";
+        }
         extractedGroup.negativeInt = matchedGroup["negativeSignSymbol"] !== undefined;
         extractedGroup.currency = matchedGroup["currencySymbol"];
+        break;
+      case "trailingSymbolCurrency":
+        extractedGroup.integer = matchedGroup["trailingInt"];
+        extractedGroup.decimal = matchedGroup["trailingDec"];
+        if (extractedGroup.decimal && extractedGroup.decimal.length === 1) {
+          extractedGroup.decimal += "0";
+        }
+        extractedGroup.negativeInt = matchedGroup["negativeSignTrailing"] !== undefined;
+        extractedGroup.currency = matchedGroup["trailingCurrencySymbol"];
         break;
       case "codeCurrency":
         extractedGroup.integer = matchedGroup["codeInt"];
         extractedGroup.decimal = matchedGroup["codeDec"];
+        if (extractedGroup.decimal && extractedGroup.decimal.length === 1) {
+          extractedGroup.decimal += "0";
+        }
         extractedGroup.negativeInt = matchedGroup["negativeSignCode"] !== undefined;
         extractedGroup.currency = matchedGroup["currencyCode"];
         break;
@@ -58,6 +80,12 @@ export function extractFirstMatch(input: string): ExtractionResult | null {
         extractedGroup.exponent = matchedGroup["integerSuperExponent"] || matchedGroup["integerCaretExponent"];
         extractedGroup.negativeInt = matchedGroup["negativeSignInteger"] !== undefined;
         break;
+      case "versionedNumber": {
+        const vMatch = matchedGroup["versionedNumber"];
+        extractedGroup.symbol = vMatch[0];
+        extractedGroup.integer = vMatch.slice(1);
+        break;
+      }
       default:
         break;
     }
@@ -91,19 +119,13 @@ export function extractAllMatches(input: string): ExtractionResult[] {
   let currentExtraction = extractFirstMatch(remainingInput);
 
   while (currentExtraction !== null && currentExtraction.input) {
-    const remainingLength = input.length - remainingInput.length;
-
-    if (results.length > 0) {
-      currentExtraction.index = remainingInput.indexOf(currentExtraction.input) + remainingLength;
-    }
-
     results.push(currentExtraction);
-
-    remainingInput = remainingInput.substring(
-      remainingInput.indexOf(currentExtraction.input) + currentExtraction.input.length,
-    );
-
+    const lastMatchEnd = currentExtraction.index + currentExtraction.input.length;
+    remainingInput = input.substring(lastMatchEnd);
     currentExtraction = extractFirstMatch(remainingInput);
+    if (currentExtraction) {
+      currentExtraction.index += lastMatchEnd;
+    }
   }
 
   return results;
