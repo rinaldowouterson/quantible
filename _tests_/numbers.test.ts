@@ -33,25 +33,25 @@ describe("positiveInteger", () => {
     expect(positiveInteger(100)).toBe("one hundred");
   });
 
-  it("should convert 123 to 'one hundred twenty three'", () => {
-    expect(positiveInteger(123)).toBe("one hundred twenty three");
+  it("should convert 123 to 'one hundred twenty-three'", () => {
+    expect(positiveInteger(123)).toBe("one hundred twenty-three");
   });
 
   it("should convert 1000 to 'one thousand'", () => {
     expect(positiveInteger(1000)).toBe("one thousand");
   });
 
-  it("should convert 12345 to 'twelve thousand three hundred forty five'", () => {
-    expect(positiveInteger(12345)).toBe("twelve thousand three hundred forty five");
+  it("should convert 12345 to 'twelve thousand three hundred forty-five'", () => {
+    expect(positiveInteger(12345)).toBe("twelve thousand three hundred forty-five");
   });
 
-  it("should convert 1234567 to 'one million two hundred thirty four thousand five hundred sixty seven'", () => {
-    expect(positiveInteger(1234567)).toBe("one million two hundred thirty four thousand five hundred sixty seven");
+  it("should convert 1234567 to 'one million two hundred thirty-four thousand five hundred sixty-seven'", () => {
+    expect(positiveInteger(1234567)).toBe("one million two hundred thirty-four thousand five hundred sixty-seven");
   });
 
   it("should handle large numbers", () => {
     expect(positiveInteger(1234567890)).toBe(
-      "one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety",
+      "one billion two hundred thirty-four million five hundred sixty-seven thousand eight hundred ninety",
     );
   });
 
@@ -80,12 +80,12 @@ describe("twoDigitDecimal", () => {
     expect(twoDigit("10")).toBe("ten");
   });
 
-  it("should convert '25' to 'twenty five'", () => {
-    expect(twoDigit("25")).toBe("twenty five");
+  it("should convert '25' to 'twenty-five'", () => {
+    expect(twoDigit("25")).toBe("twenty-five");
   });
 
-  it("should convert '99' to 'ninety nine'", () => {
-    expect(twoDigit("99")).toBe("ninety nine");
+  it("should convert '99' to 'ninety-nine'", () => {
+    expect(twoDigit("99")).toBe("ninety-nine");
   });
 
   it("should return an empty string for numbers >= 100", () => {
@@ -127,7 +127,7 @@ describe("perDigitDecimal", () => {
 
 // ######## NUMBER TO SPOKEN WORD ########
 describe("convertNumberToSpokenWord", () => {
-  it("should convert { integer: '123', decimal: '45', negativeInt: false } to 'one hundred twenty three point twenty five'", () => {
+  it("should convert { integer: '123', decimal: '45', negativeInt: false } to 'one hundred twenty-three point forty-five'", () => {
     expect(
       convertNumberToSpokenWord({
         integer: "123",
@@ -137,7 +137,7 @@ describe("convertNumberToSpokenWord", () => {
         input: "",
         index: 0,
       }),
-    ).toBe("one hundred twenty three point forty five");
+    ).toBe("one hundred twenty-three point forty-five");
   });
 
   it("should convert { integer: '0', decimal: '00', negativeInt: false } to 'zero point zero zero'", () => {
@@ -192,7 +192,7 @@ describe("convertNumberToSpokenWord", () => {
     ).toBe("one");
   });
 
-  it("should convert { integer: '123', decimal: '4', negativeInt: true } to 'negative one hundred twenty three point four '", () => {
+  it("should convert { integer: '123', decimal: '4', negativeInt: true } to 'negative one hundred twenty-three point four'", () => {
     expect(
       convertNumberToSpokenWord({
         integer: "123",
@@ -202,7 +202,7 @@ describe("convertNumberToSpokenWord", () => {
         input: "",
         index: 0,
       }),
-    ).toBe("negative one hundred twenty three point four");
+    ).toBe("negative one hundred twenty-three point four");
   });
 });
 
@@ -211,7 +211,7 @@ describe("convertCurrencyToSpokenWord", () => {
   it("should return spoken words for Currency codes", () => {
     // console.log("it should return spoken words for Currency codes");
     const tempres: baseCurrency = extractAllMatches("I have -123.45 USD")[0] as baseCurrency;
-    expect(convertCurrencyToSpokenWord(tempres)).toBe("negative one hundred twenty three dollars and forty five cents");
+    expect(convertCurrencyToSpokenWord(tempres)).toBe("negative one hundred twenty-three dollars and forty-five cents");
 
     expect(
       convertCurrencyToSpokenWord({
@@ -223,7 +223,7 @@ describe("convertCurrencyToSpokenWord", () => {
         input: "-123.45 USD",
         index: 0,
       }),
-    ).toBe("one hundred twenty three dollars and one cent");
+    ).toBe("one hundred twenty-three dollars and one cent");
 
     expect(
       convertCurrencyToSpokenWord({
@@ -235,7 +235,7 @@ describe("convertCurrencyToSpokenWord", () => {
         input: "-123.45 EUR",
         index: 0,
       }),
-    ).toBe("one hundred twenty three euros and forty five cents");
+    ).toBe("one hundred twenty-three euros and forty-five cents");
   });
 
   it("should return spoken words for Currency symbols", () => {
@@ -249,7 +249,7 @@ describe("convertCurrencyToSpokenWord", () => {
         input: "-$123.45",
         index: 0,
       }),
-    ).toBe("negative one hundred twenty three dollars and forty five cents");
+    ).toBe("negative one hundred twenty-three dollars and forty-five cents");
 
     expect(
       convertCurrencyToSpokenWord({
@@ -261,7 +261,7 @@ describe("convertCurrencyToSpokenWord", () => {
         input: "€123.45",
         index: 0,
       }),
-    ).toBe("one hundred twenty three euros and forty five cents");
+    ).toBe("one hundred twenty-three euros and forty-five cents");
   });
 });
 
@@ -282,7 +282,7 @@ describe("convertScientificExpressionToSpokenWord", () => {
     ).toBe("one times ten to the power of three");
   });
 
-  it("should convert '1.23e3' to 'one point twenty three times ten to the power of three'", () => {
+  it("should convert '1.23e3' to 'one point twenty-three times ten to the power of three'", () => {
     expect(
       convertScientificExpressionToSpokenWord({
         integer: "1",
@@ -294,7 +294,7 @@ describe("convertScientificExpressionToSpokenWord", () => {
         index: 0,
         length: 6,
       } as baseScientific),
-    ).toBe("one point twenty three times ten to the power of three");
+    ).toBe("one point twenty-three times ten to the power of three");
   });
 
   it("should convert '1e-3' to 'one times ten to the power of negative three'", () => {
@@ -327,7 +327,7 @@ describe("convertScientificExpressionToSpokenWord", () => {
     ).toBe("negative one times ten to the power of three");
   });
 
-  it("should convert '-1.23e-4' to 'negative one point twenty three times ten to the power of negative four'", () => {
+  it("should convert '-1.23e-4' to 'negative one point twenty-three times ten to the power of negative four'", () => {
     expect(
       convertScientificExpressionToSpokenWord({
         integer: "1",
@@ -339,13 +339,13 @@ describe("convertScientificExpressionToSpokenWord", () => {
         index: 0,
         length: 7,
       } as baseScientific),
-    ).toBe("negative one point twenty three times ten to the power of negative four");
+    ).toBe("negative one point twenty-three times ten to the power of negative four");
   });
 });
 
 // ######## NUMERIC UNIT TO SPOKEN WORD ########
 describe("convertNumericUnitToSpokenWord", () => {
-  it("should convert '123.456 kg' to 'one hundred twenty three point four five six kilograms'", () => {
+  it("should convert '123.456 kg' to 'one hundred twenty-three point four five six kilograms'", () => {
     expect(
       convertNumericUnitToSpokenWord({
         integer: "123",
@@ -359,9 +359,9 @@ describe("convertNumericUnitToSpokenWord", () => {
         index: 0,
         length: 9,
       } as baseNumberUnit),
-    ).toBe("one hundred twenty three point four five six kilograms");
+    ).toBe("one hundred twenty-three point four five six kilograms");
   });
-  it("should convert '123.456 kg^2' to 'one hundred twenty three point four five six kilograms squared'", () => {
+  it("should convert '123.456 kg^2' to 'one hundred twenty-three point four five six kilograms squared'", () => {
     expect(
       convertNumericUnitToSpokenWord({
         integer: "123",
@@ -375,7 +375,7 @@ describe("convertNumericUnitToSpokenWord", () => {
         index: 0,
         length: 11,
       } as baseNumberUnit),
-    ).toBe("one hundred twenty three point four five six kilograms squared");
+    ).toBe("one hundred twenty-three point four five six kilograms squared");
   });
 
   it("should convert '15 m/s²' to 'fifteen meters per second squared'", () => {

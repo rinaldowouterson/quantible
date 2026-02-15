@@ -49,6 +49,23 @@ describe("regexMatches", () => {
     expect("-".match(regexMatches)?.[0]).toBe("-");
     expect("*".match(regexMatches)?.[0]).toBe("*");
     expect("/".match(regexMatches)?.[0]).toBe("/");
+    expect("=".match(regexMatches)?.[0]).toBe("=");
+    expect("<".match(regexMatches)?.[0]).toBe("<");
+    expect(">".match(regexMatches)?.[0]).toBe(">");
+    expect("<=".match(regexMatches)?.[0]).toBe("<=");
+    expect(">=".match(regexMatches)?.[0]).toBe(">=");
+    expect("≠".match(regexMatches)?.[0]).toBe("≠");
+    expect("≈".match(regexMatches)?.[0]).toBe("≈");
+    expect("&".match(regexMatches)?.[0]).toBe("&");
+    expect("@".match(regexMatches)?.[0]).toBe("@");
+    expect("#".match(regexMatches)?.[0]).toBe("#");
+    expect("|".match(regexMatches)?.[0]).toBe("|");
+  });
+
+  it("should match new currency symbols", () => {
+    expect("100 ₩".match(regexMatches)?.[0]).toBe("100 ₩");
+    expect("100 ₫".match(regexMatches)?.[0]).toBe("100 ₫");
+    expect("100 ฿".match(regexMatches)?.[0]).toBe("100 ฿");
   });
 
   it("should not match invalid patterns", () => {
