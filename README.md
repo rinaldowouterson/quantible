@@ -35,6 +35,12 @@ Quantible excels at transforming various numerical expressions into their spoken
 - `$5`   ->  "five dollars"
 - `5.25 USD` ->  "five dollars and twenty-five cents"
 - `$5.25`  ->  "five dollars and twenty-five cents"
+- `1000 ₩` ->  "one thousand won"
+- `v2`    ->  "v two"
+- `_5`    ->  "underscore five"
+- `A & B`  ->  "A and B"
+- `e.g.`   ->  "example given"
+
 
 The `autoReplaceAllMatches` function demonstrates the power of Quantible by converting all quantities within a text:
 
