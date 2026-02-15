@@ -19,38 +19,46 @@
 
 ## Examples
 
-Quantible excels at transforming various numerical expressions into their spoken word equivalents:
+Quantible handles a wide spectrum of numerical and symbolic expressions, converting them into natural, spoken-word English.
 
-- `5 - 10`  ->  "five minus ten"
-- `-5 + 10` ->  "negative five plus ten"
-- `10m/s`  ->  "ten meters per second"
-- `15m/s²` ->  "fifteen meters per second squared"
-- `15²` or `15^2` ->  "fifteen to the power of two"
-- `2^2m^2` ->  "two to the power of two meters squared"
-- `2^2m²` ->  "two to the power of two square meters"
-- `5E-10` ->  "five times ten to the power of negative ten"
-- `-5E10` ->  "negative five times ten to the power of ten"
-- `5E10`  ->  "five times ten to the power of ten"
-- `5 USD` ->  "five dollars"
-- `$5`   ->  "five dollars"
-- `5.25 USD` ->  "five dollars and twenty-five cents"
-- `$5.25`  ->  "five dollars and twenty-five cents"
-- `1000 ₩` ->  "one thousand won"
-- `v2`    ->  "v two"
-- `_5`    ->  "underscore five"
-- `A & B`  ->  "A and B"
-- `e.g.`   ->  "example given"
+### 🔢 Numbers & Decimals
+- `123` -> "one hundred twenty-three"
+- `1,234,567` -> "one million two hundred thirty-four thousand five hundred sixty-seven"
+- `1.5` -> "one point five"
+- `-45.67` -> "negative forty-five point sixty-seven"
 
+### 💰 Currencies (Symbol & Code)
+- `$1,000` -> "one thousand dollars"
+- `€50.00` -> "fifty euros"
+- `100 ₩` -> "one hundred won"
+- `123.45 USD` -> "one hundred twenty-three dollars and forty-five cents"
+- `$1.5` -> "one dollar and fifty cents" (Smart padding)
+
+### 📏 Units & Scientific Notation
+- `10m/s` -> "ten meters per second"
+- `15m/s²` -> "fifteen meters per second squared"
+- `5E-10` -> "five times ten to the power of negative ten"
+- `1.23e-4 mol·L⁻¹·s⁻¹` -> "one point twenty-three times ten to the power of negative four moles per liter per second"
+
+### 🏷️ Versioning & Identifiers
+- `v2` -> "v two"
+- `v3.2.1` -> "v three point two point one"
+- `_5` -> "underscore five"
+- `file_name_v2` -> "file underscore name underscore v two"
+
+### 🔣 Abbreviations & Symbols
+- `A & B` -> "A and B"
+- `e.g.` -> "example given"
+- `i.e.` -> "that is"
+- `Item #1` -> "Item hash one"
 
 The `autoReplaceAllMatches` function demonstrates the power of Quantible by converting all quantities within a text:
 
 **Input Sentence:**
+> "The new SSD offers 2TB capacity, costs $199.99, and runs at 5,400 RPM."
 
-> "We made $500 more this year than last years projections of 25%"
-
-**Output Sentence (after `autoReplaceAllMatches`):**
-
-> "We made five hundred dollars more this year than last years projections of twenty-five percent"
+**Output Sentence:**
+> "The new SSD offers two terabytes capacity, costs one hundred ninety-nine dollars and ninety-nine cents, and runs at five thousand four hundred revolutions per minute."
 
 ## Installation
 
