@@ -23,11 +23,10 @@ export interface numericBaseExtraction extends baseExtraction {
 /**
  * @interface baseCurrency
  * @extends {numericBaseExtraction}
- * @description Represents the structure for currency extraction results,
- * extending the numericBaseExtraction with properties for match type (symbol or code) and currency symbol or code.
+ * @description Represents the structure for currency extraction results.
  */
 export interface baseCurrency extends numericBaseExtraction {
-  matchType: "symbolCurrency" | "codeCurrency";
+  matchType: "symbolCurrency" | "trailingSymbolCurrency" | "codeCurrency";
   currency: string;
 }
 
@@ -56,6 +55,16 @@ export interface baseNumberUnit extends numericBaseExtraction {
 }
 
 /**
+ * @interface baseCommonSymbol
+ * @extends {baseExtraction}
+ * @description Represents the structure for common symbol extraction results (e.g. &, @, #).
+ */
+export interface baseCommonSymbol extends baseExtraction {
+  matchType: "commonSymbol";
+  symbol: string;
+}
+
+/**
  * @interface baseUnitOnly
  * @extends {baseExtraction}
  * @description Represents the structure for unit-only extraction results,
@@ -75,6 +84,17 @@ export interface baseUnitOnly extends baseExtraction {
  */
 export interface baseOperator extends baseExtraction {
   matchType: "operator";
+}
+
+/**
+ * @interface baseVersionedNumber
+ * @extends {baseExtraction}
+ * @description Represents a number with a specific version or structural prefix (e.g. v2, _5).
+ */
+export interface baseVersionedNumber extends baseExtraction {
+  matchType: "versionedNumber";
+  symbol: string; // The prefix character (v, V, _)
+  integer: string;
 }
 
 /**
@@ -104,4 +124,5 @@ export interface ExtractionResult {
   exponent?: string;
   unit?: string;
   unitExponent?: string;
+  symbol?: string;
 }

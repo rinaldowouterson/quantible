@@ -5,6 +5,7 @@ import { convertNumericUnitToSpokenWord } from "./converters/convertNumericUnitT
 import { convertOperatorToSpokenWord } from "./converters/convertOperatorToSpokenWord";
 import { convertScientificExpressionToSpokenWord } from "./converters/convertScientificExpressionToSpokenWord";
 import { convertUnitOnlyToSpokenWord } from "./converters/convertUnitOnlyToSpokenWord";
+import { commonSymbols, abbreviationMap } from "./config/default";
 
 import type {
   baseCurrency,
@@ -13,7 +14,9 @@ import type {
   baseOperator,
   baseScientific,
   baseUnitOnly,
+  baseCommonSymbol,
   ExtractionResult,
+  baseVersionedNumber,
 } from "./interfaces/definitions";
 
 import { validateExtractionResult } from "./utils/validateExtractionResultObject";
@@ -56,7 +59,33 @@ const convertQuantities = {
         result = convertNumberToSpokenWord(extractionResult as baseNumber);
         break;
 
+      case "abbreviation": {
+        // Map abbreviation to its spoken form using abbreviationMap
+        const abbrev = (extractionResult as baseCommonSymbol).symbol;
+        result = abbreviationMap[abbrev] || abbrev;
+        break;
+      }
+      case "versionedNumber": {
+        const vNum = extractionResult as baseVersionedNumber;
+        const prefixChar = vNum.symbol || "";
+        const numericPart = convertNumberToSpokenWord({
+          integer: vNum.integer,
+          negativeInt: false,
+          matchType: "number",
+          input: vNum.integer,
+          index: vNum.index,
+        } as baseNumber);
+        result = `${prefixChar} ${numericPart}`;
+        break;
+      }
+      case "commonSymbol":
+        result = commonSymbols[(extractionResult as baseCommonSymbol).symbol] || "";
+        break;
+
       case "symbolCurrency":
+        result = convertCurrencyToSpokenWord(extractionResult as baseCurrency);
+        break;
+      case "trailingSymbolCurrency":
         result = convertCurrencyToSpokenWord(extractionResult as baseCurrency);
         break;
       case "codeCurrency":

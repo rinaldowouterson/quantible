@@ -320,6 +320,26 @@ export const units: { [key: string]: Unit } = {
   Gbps: { singular: "gigabit per second", plural: "gigabits per second" },
 };
 
+/**
+ * Common typographic and general symbols.
+ */
+export const commonSymbols: { [key: string]: string } = {
+  "&": " and ",
+  "@": " at ",
+  "#": " hash ",
+  "|": " pipe ",
+  ".": " dot ",
+  _: " underscore ",
+};
+
+/**
+ * Special abbreviations that should be spoken as letters, not units.
+ */
+export const abbreviationMap: { [key: string]: string } = {
+  "e.g.": "example given",
+  "i.e.": "that is",
+};
+
 export const numbers = {
   ones: ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
   teens: ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"],
@@ -361,6 +381,27 @@ export const currencySymbols: { [key: string]: Currency } = {
     singular: "rupee",
     plural: "rupees",
     fraction: { singular: "paisa", plural: "paise" },
+  },
+};
+
+/**
+ * Currencies that are typically placed after the number (trailing).
+ */
+export const trailingCurrencySymbols: { [key: string]: Currency } = {
+  "₩": {
+    singular: "won",
+    plural: "won",
+    fraction: null,
+  },
+  "₫": {
+    singular: "dong",
+    plural: "dong",
+    fraction: null,
+  },
+  "฿": {
+    singular: "baht",
+    plural: "baht",
+    fraction: { singular: "satang", plural: "satang" },
   },
 };
 
@@ -410,6 +451,7 @@ export const currencyCodes: { [key: string]: Currency } = {
 
 export const currencies = {
   ...currencySymbols,
+  ...trailingCurrencySymbols,
   ...currencyCodes,
 };
 
@@ -423,4 +465,11 @@ export const math = {
   "÷": "divided by",
   ":": "divided by",
   "^": "to the power of",
+  "=": "equals",
+  "<": "is less than",
+  ">": "is greater than",
+  "<=": "is less than or equal to",
+  ">=": "is greater than or equal to",
+  "≠": "is not equal to",
+  "≈": "is approximately equal to",
 };
