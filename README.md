@@ -52,7 +52,7 @@ Quantible handles a wide spectrum of numerical and symbolic expressions, convert
 - `e.g.` -> "example given"
 - `i.e.` -> "that is"
 - `test@example.com` -> "test at example dot com" (Email normalization)
-- `www.hello.com` -> "www dot hello dot com" (Website normalization)
+- `www.hello.com` -> "double you double you double you dot hello dot com" (Website normalization)
 - `Item #1` -> "Item hash one"
 
 The `autoReplaceAllMatches` function demonstrates the power of Quantible by converting all quantities within a text:

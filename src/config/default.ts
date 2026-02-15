@@ -338,6 +338,7 @@ export const commonSymbols: { [key: string]: string } = {
 export const abbreviationMap: { [key: string]: string } = {
   "e.g.": "example given",
   "i.e.": "that is",
+  www: "double you double you double you",
 };
 
 export const numbers = {

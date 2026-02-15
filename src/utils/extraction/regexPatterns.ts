@@ -50,7 +50,7 @@ const regexMatches = new RegExp(
     [
       // 0. ABBREVIATIONS (special multi‑character sequences)
       // Priority: Highest, to prevent mis‑matching as units or symbols
-      `(?<abbreviation>e\\.g\\.|i\\.e\\.)`,
+      `(?<abbreviation>e\\.g\\.|i\\.e\\.|www)`,
 
       // 1. COMMON SYMBOLS
       // Priority: High
