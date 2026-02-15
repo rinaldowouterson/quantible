@@ -21,11 +21,12 @@
 
 Quantible handles a wide spectrum of numerical and symbolic expressions, converting them into natural, spoken-word English.
 
-### 🔢 Numbers & Decimals
+### 🔢 Numbers, Decimals & Math
 - `123` -> "one hundred twenty-three"
-- `1,234,567` -> "one million two hundred thirty-four thousand five hundred sixty-seven"
 - `1.5` -> "one point five"
-- `-45.67` -> "negative forty-five point sixty-seven"
+- `5 - 10` -> "five minus ten"
+- `-5 + 10` -> "negative five plus ten"
+- `1,234,567` -> "one million two hundred thirty-four thousand five hundred sixty-seven"
 
 ### 💰 Currencies (Symbol & Code)
 - `$1,000` -> "one thousand dollars"
@@ -46,10 +47,12 @@ Quantible handles a wide spectrum of numerical and symbolic expressions, convert
 - `_5` -> "underscore five"
 - `file_name_v2` -> "file underscore name underscore v two"
 
-### 🔣 Abbreviations & Symbols
+### 🔣 Abbreviations & Symbols (Normalization)
 - `A & B` -> "A and B"
 - `e.g.` -> "example given"
 - `i.e.` -> "that is"
+- `test@example.com` -> "test at example dot com" (Email normalization)
+- `www.hello.com` -> "www dot hello dot com" (Website normalization)
 - `Item #1` -> "Item hash one"
 
 The `autoReplaceAllMatches` function demonstrates the power of Quantible by converting all quantities within a text:
@@ -57,7 +60,7 @@ The `autoReplaceAllMatches` function demonstrates the power of Quantible by conv
 **Input Sentence:**
 > "The new SSD offers 2TB capacity, costs $199.99, and runs at 5,400 RPM."
 
-**Output Sentence:**
+**Output Sentence (after `autoReplaceAllMatches`):**
 > "The new SSD offers two terabytes capacity, costs one hundred ninety-nine dollars and ninety-nine cents, and runs at five thousand four hundred revolutions per minute."
 
 ## Installation
